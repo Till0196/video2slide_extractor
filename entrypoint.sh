@@ -19,7 +19,7 @@ find "$INPUT_DIR" -type f | while read -r video_file; do
     done
     
     if [ "$is_video" = true ]; then
-        video_name=$(basename "$video_file" | sed "s/\.[^.]*$//"
+        video_name=$(basename "$video_file" | sed "s/\.[^.]*$//")
         output_path="$OUTPUT_DIR/$video_name"
         mkdir -p "$output_path"
         
