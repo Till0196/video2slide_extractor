@@ -1,0 +1,40 @@
+services:
+  video2slide_extractor:
+    image: ghcr.io/till0196/video2slide_extractor:latest
+    # build:
+    #   context: .
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
+    configs:
+      - source: slide_config
+        target: /app/config.toml
+
+configs:
+  slide_config:
+    content: |
+      [slide_detection]
+      # フレーム差分の閾値（低いほど多くのスライドを検出）
+      frame_diff_threshold = 10
+      # 最小コントゥア面積（小さいほど多くのスライドを検出）
+      min_contour_area = 600
+      # 最小フレーム間隔（フレーム数）
+      min_frame_interval = 5
+      # 安定性チェックのフレーム数
+      stability_frames = 10
+      # ブラー処理のカーネルサイズ
+      blur_kernel_size = 13
+      # コントラストクリップの制限
+      contrast_clip_limit = 1.5
+      # コントラストグリッドのサイズ
+      contrast_grid_size = 8
+      # 類似度の閾値
+      similarity_threshold = 1
+
+      [output]
+      # 出力画像の品質（1-100）
+      jpeg_quality = 100
+      # 出力画像の拡張子
+      extension = "jpg" 

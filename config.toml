@@ -1,0 +1,29 @@
+[slide_detection]
+# Threshold for frame difference detection (lower values detect more slides)
+frame_diff_threshold = 10
+
+# Minimum contour area for change detection (lower values detect more slides)
+min_contour_area = 600
+
+# Minimum frames between detected slides
+min_frame_interval = 5
+
+# Number of frames to check for stability
+stability_frames = 10
+
+# Kernel size for blur processing
+blur_kernel_size = 13
+
+# Contrast enhancement parameters
+contrast_clip_limit = 1.5
+contrast_grid_size = 8
+
+# Similarity threshold for duplicate detection (0.0-1.0)
+similarity_threshold = 1
+
+[output]
+# JPEG quality for output images (1-100)
+jpeg_quality = 95
+
+# Output image extension
+extension = "jpg" 
